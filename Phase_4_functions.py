@@ -1,8 +1,9 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 import itertools
 import math
+import matplotlib.pyplot as plt
+import seaborn as sns
 from statsmodels.tsa.statespace.sarimax import SARIMAX
 from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import adfuller
@@ -15,7 +16,7 @@ from sklearn.preprocessing import StandardScaler
 
 
 
-def sarimax_search(train, p=range(1,3), d=range(1,2), q=range(1,3),
+def sarimax_search(train, p=range(1,3), d=range(1,2), q=range(1,3), maxiter=50,
                    enforce_stationarity=False, enforce_invertibility=False):
     
     """
@@ -28,6 +29,7 @@ def sarimax_search(train, p=range(1,3), d=range(1,2), q=range(1,3),
     p: (range) for the iterations of p in SARIMAX model, default = range(1,3)
     d: (range) for the iterations of d in SARIMAX model, default = range(1,2)
     q: (range) for the iterations of q in SARIMAX model, default = range(1,3)
+    maxiter: maximum interations, default=50
     enforce_stationarity:  default = False
     enforce_invertibility: default = False
     """
@@ -50,7 +52,7 @@ def sarimax_search(train, p=range(1,3), d=range(1,2), q=range(1,3),
                     model = SARIMAX(train, order=param, seasonal_order=seasonal_param,
                                    enforce_stationarity=enforce_stationarity, 
                                     enforce_invertibility=enforce_invertibility)
-                    results = model.fit()
+                    results = model.fit(maxiter=maxiter)
                     y_hat = results.predict(type='levels')
                     RMSE = np.sqrt(mean_squared_error(train, y_hat))
                     print(f'SARIMAX {param} x {seasonal_param} - RMSE:{RMSE}')
@@ -286,16 +288,4 @@ def LSTM_func(df, City=None, verbose=1, use_multiprocessing=False, epochs=5, bat
     print(f'RMSE: {RMSE}')
     print("%RMSE: ", RMSE/y_test.mean())
 
-def train_test_split(ts, train_size=.8):
-    """
-    Takes in a time series and creates and train test split.
-    
-    Parameters
-    ----------
-    
-    ts: time series
-    train size: (float) portion of time series reserved for train (default=.8)
-    """
-    cutoff = round(ts.shape[0]*.8)
-    train = ts[:cutoff]
-    test = ts[cutoff:]
+
