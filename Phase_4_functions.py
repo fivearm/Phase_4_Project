@@ -73,13 +73,9 @@ def sarimax_search(train, p=range(1,3), d=range(1,2), q=range(1,3), maxiter=50,
 def fbprophet_func(df, train_size=.8, periods=13):
     '''
     The input dataframe must only have two columns called ds and y
-
     Returns the Original and Predictions along with the RMSE of the test data
-
     Will split the data into a train, test for you.
-
     Height is for the height of the arrow
-
     periods is for the periods you wish to predict
     '''
     df_prophet = df
@@ -96,7 +92,7 @@ def fbprophet_func(df, train_size=.8, periods=13):
 
     fig, ax = plt.subplots()
 
-    sns.lineplot(original['time'], original['value'],
+    sns.lineplot(df['ds'], df['y'],
                  label='Original', color='r', linewidth=4)
     sns.lineplot(
         future_forecast['ds'], future_forecast['yhat'], label='Predictions', color='b')
@@ -108,11 +104,11 @@ def fbprophet_func(df, train_size=.8, periods=13):
     ax.set_xlabel('Time')
     plt.legend(loc='best')
 
-    MSE = np.square(np.subtract(test.y, future_forecast.yhat)).mean()
+    MSE = np.square(np.subtract(train.y, forecast.yhat)).mean()
 
     RMSE = math.sqrt(MSE)
-    print(f'RMSE for the test data: {RMSE}')
-    print("%RMSE: ", RMSE / original.mean())
+    print(f'RMSE for the train data: {RMSE}')
+    print("%RMSE: ", RMSE / df.mean())
 
 
 
@@ -264,7 +260,7 @@ def LSTM_func(df, City=None, verbose=1, use_multiprocessing=False, epochs=5, bat
     model.compile(optimizer='adam', loss='mse')
     model.summary()
     # Fitting the model on the X_train and y_train
-    model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_data=(
+    history = model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_data=(
         x_test, y_test), verbose=verbose, use_multiprocessing=use_multiprocessing)
 
     y_predicts = model.predict(x_train)
@@ -287,5 +283,9 @@ def LSTM_func(df, City=None, verbose=1, use_multiprocessing=False, epochs=5, bat
     RMSE = math.sqrt(MSE)
     print(f'RMSE: {RMSE}')
     print("%RMSE: ", RMSE/y_test.mean())
+    return history 
 
-
+def LSTM_val(history):    
+    plt.plot(history.history['loss'], label = 'Training loss')
+    plt.plot(history.history['val_loss'], label = 'Validation loss')
+    plt.legend();
