@@ -45,7 +45,7 @@ def sarimax_search(train, p=range(1,3), d=range(1,2), q=range(1,3), maxiter=50,
     answer = input("Would you like to run the models? (y or n)?")
     
     if (answer == 'y' or answer == 'yes'):
-        lowest_RMSE = 1e10
+        lowest_aic = 1e10
         for param in pdq: 
             for seasonal_param in seasonal_pdq:
                 try: 
@@ -53,17 +53,15 @@ def sarimax_search(train, p=range(1,3), d=range(1,2), q=range(1,3), maxiter=50,
                                    enforce_stationarity=enforce_stationarity, 
                                     enforce_invertibility=enforce_invertibility)
                     results = model.fit(maxiter=maxiter)
-                    y_hat = results.predict(type='levels')
-                    RMSE = np.sqrt(mean_squared_error(train, y_hat))
-                    print(f'SARIMAX {param} x {seasonal_param} - RMSE:{RMSE}')
-                    if RMSE < lowest_RMSE:
-                        lowest_RMSE = RMSE
+                    print(f'SARIMAX {param} x {seasonal_param} - AIC:{results.aic}')
+                    if results.aic < lowest_aic:
+                        lowest_aic = results.aic
                         best_param = param
                         best_seasonal_param = seasonal_param
                 except:
                     print('Oops!')
                     continue
-        print(f'BEST RESULTS:  SARIMAX {best_param} x {best_seasonal_param} - RMSE:{lowest_RMSE}')  
+        print(f'BEST RESULTS:  SARIMAX {best_param} x {best_seasonal_param} - AIC:{results.aic}')  
     else:
         print('OK, SARIMAX models will not be run.')
 
@@ -90,15 +88,13 @@ def fbprophet_func(df, train_size=.8, periods=13, city = None):
     future = model.make_future_dataframe(periods=periods, freq='MS')
     future_forecast = model.predict(future)
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize = (15,10))
 
-    sns.lineplot(df['ds'], df['y'],
+    sns.lineplot(train['ds'], train['y'],
                  label='Original', color='r', linewidth=4)
     sns.lineplot(
         future_forecast['ds'], future_forecast['yhat'], label='Predictions', color='b')
     model.plot(future_forecast, ax=ax)
-    plt.vlines(x=train['ds'].max(), ymin=future_forecast['yhat'].min(
-    ) - 5, ymax=future_forecast['yhat'].max() + 5, linestyles='dashed')
     ax.set_title(f'{city} House Prices')
     ax.set_ylabel('House Prices')
     ax.set_xlabel('Time')
