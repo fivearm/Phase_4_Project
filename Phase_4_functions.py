@@ -70,7 +70,7 @@ def sarimax_search(train, p=range(1,3), d=range(1,2), q=range(1,3), maxiter=50,
 
 
 
-def fbprophet_func(df, train_size=.8, periods=13):
+def fbprophet_func(df, train_size=.8, periods=13, city = None):
     '''
     The input dataframe must only have two columns called ds and y
     Returns the Original and Predictions along with the RMSE of the test data
@@ -99,7 +99,7 @@ def fbprophet_func(df, train_size=.8, periods=13):
     model.plot(future_forecast, ax=ax)
     plt.vlines(x=train['ds'].max(), ymin=future_forecast['yhat'].min(
     ) - 5, ymax=future_forecast['yhat'].max() + 5, linestyles='dashed')
-    ax.set_title('Denver House Prices')
+    ax.set_title(f'{city} House Prices')
     ax.set_ylabel('House Prices')
     ax.set_xlabel('Time')
     plt.legend(loc='best')
