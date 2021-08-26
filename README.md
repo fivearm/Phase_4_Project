@@ -29,11 +29,31 @@ We examined more than 30,000 records from Zillow that included house prices acro
    
 ## Methods
 
+### Zip Code Selection
+To create the dataset used for zip code selection, the Zillow and Realtor.com datasets were merged on zip code and record dates. In order to select the zip codes that would yeild the largest ROI, we considered both market and housing characteristics. 
 
+For market evaluation, we considered the average pending ratio and average number of days a listing is on the market for. Pending ratio is the ratio of number of listings pending (listings that have accepted an offer) divided by the total number of active listings for a given month. For listing evaluation, we considered the average house value and the number of listings that underwent a price increase. 
+
+For each of these characteristics, we chose to account for the percent change in these averages from one month to the next. This would allow us to choose zip codes that continuously showed growth in the pending ratio, average house value, and number of listings. We counted against houses that showed monthly growth in the number of days on the market.
+
+We weighted the average of these columns for each zip code with the following equation:
+
+zip code score = 0.4(house value change) + 0.2(pending ratio change) + 0.2(price increase change) - 0.2(days on market change)
+We selected the top 5 zipcodes with the highest scores.
     
 ## EDA Results Notable Features
 
 
+### House Value and Price Increase Count
+
+![image](./images/house_value_and_price_increase_count.png)
+
+4/5 selected zipcodes contain houses with higher values than the other zipcodes combined. Zip code 28546 has homes with lower values, but a very high price increase rate of change. This indicates an 'up and coming' zip code, where the homes have consistently garnered value throughout time. 
+
+### Pending Ratio and Days on Market
+![image](./images/pending_ratio_and_days_on_market.png)
+ 
+The average days a property is on the market is not a sufficient indicator of consumer demand, because pending properties, or properties that have accepted offers, are still considered 'on the market'. To judge consumer readiness, we selected zipcodes that outpreformed the other zipcodes for increased the number of pending houses while having comparitavely lower days on market increases. 
 
  
 ## Modeling Results
