@@ -1,4 +1,4 @@
-# Phase_4_Project
+# Phase_5_Project
  
 **Authors**: *Nina Vergara, Manav Kahlon, Ben Bowman*
   
@@ -19,19 +19,16 @@
 A real estate investment company has asked us to select the top five US zip codes to invest in.  
  
 ## Data
+We examined more than 30,000 records from Zillow that included house prices across different zip codes from 1997-2021. We found additional data from Realtor.com that was used in the selection of the top 5 zip codes. The Zillow dataset contained 316 columns most of which were different dates from 1996 to 2021 with house prices in that zip code. We compressed the dataset into only 10 columns with the time becoming the index column and the values melting into a single column based on their zip code. The Realtor dataset included....
 
 
- #### Data from Zillow [2](#sources)
-    * 
- #### Non-engineered data
-    * 
- #### Engineered data
+ #### Data from Zillow [1](#sources)
+    * new_zillow_data.csv
+ #### Data from Realtor [2](#sources)
     * 
    
-    
-    
 ## Methods
- 
+
 
     
 ## EDA Results Notable Features
@@ -40,7 +37,7 @@ A real estate investment company has asked us to select the top five US zip code
 
  
 ## Modeling Results
-
+We build multiple time series models ranging from a simple naive model to a LSTM and Facebook Prophet model. The metric we chose was $RMSE$ 
 
 
   
@@ -54,7 +51,7 @@ A real estate investment company has asked us to select the top five US zip code
 Please review our full analysis in different notebooks [Data Processing Notebook](./01_data_preparation.ipynb), [First Set of Models Notebook](./02_logistic_regression_knn_svm.ipynb), [Random Forest Model Notebook](./03_random_forest_models.ipynb), [XGBoost Notebook](./04_xgboost.ipynb), [Feature Engineering Notebook](./05_feature_engineering.ipynb), [Visualizations Notebook](./06_visualizations.ipynb), and our [Final Notebook](./07_svm_rfc.ipynb) or our [Presentation](./Presentation.pdf).    
     
 ## Repositroy Structure
- ```
+```
 ├── data                                  <- Sourced from an external source
 ├── images                                <- Images that were used in the presentation and notebooks                                           
 ├── gitignore                             <- python files to ignore 
@@ -68,7 +65,6 @@ Please review our full analysis in different notebooks [Data Processing Notebook
 ├── Presentation.pdf                      <- PDF of our project presentation  
 ├── Data Dictionary.txt                   <- Data Dictionary
 └── README.md                             <- The README.md
-
 ```
 #### Sources
 1) https://lifewater.org/blog/tanzania-water-crisis-facts/
