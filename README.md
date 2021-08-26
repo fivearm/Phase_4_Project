@@ -53,8 +53,8 @@ Please review our full analysis in different notebooks [Data Processing Notebook
 ## Repositroy Structure
 ```
 ├── data                                  <- Sourced from an external source
-├── images                                <- Images that were used in the presentation and notebooks                                           
-├── gitignore                             <- python files to ignore 
+├── images                                <- Images that were used in the presentation and notebooks                                      
+├── gitignore                             <- python files to ignore
 ├── 01_data_preparation.ipynb             <- Data Prep Notebook
 ├── 02_logistic_regression_knn_svm.ipynb  <- Logistic Regression, KNN, and SVM Models Notebook
 ├── 03_random_forest_models.ipynb         <- Random Forest Models Notebook
