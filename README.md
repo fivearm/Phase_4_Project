@@ -69,7 +69,7 @@ For the best projected ROI, we suggest Aurora, CO, with a current median home pr
     
     
 ## For More Information
-Please review our full analysis in different notebooks [Aurora, CO](./notebooks/Aurora_CO_80016.ipynb), [Erie, CO](./notebooks/Erie_CO_80516.ipynb), [Jacksonville, NC](./notebooks/Jacksonville_NC_28546.ipynb), [Functions to model](./notebooks/Phase_4_functions.py), [Saratoga Springs, UT](./notebooks/Saratoga Springs_UT_84045.ipynb), and our [Data Prep Notebook](./notebooks/zip_code_selection_and_one_model.ipynb), or our [Presentation](./Presentation.pdf).    
+Please review our full analysis in different notebooks [Aurora, CO](./notebooks/Aurora_CO_80016.ipynb), [Erie, CO](./notebooks/Erie_CO_80516.ipynb), [Jacksonville, NC](./notebooks/Jacksonville_NC_28546.ipynb), [Functions to model](./notebooks/Phase_4_functions.py), [Saratoga Springs, UT](./notebooks/Saratoga_Springs_UT_84045.ipynb), and our [Data Prep Notebook](./notebooks/zip_code_selection_and_one_model.ipynb), or our [Presentation](./Presentation.pdf).    
     
 ## Repositroy Structure
 ```
@@ -81,7 +81,7 @@ Please review our full analysis in different notebooks [Aurora, CO](./notebooks/
     └── Jacksonville_NC_28546.ipynb            <- Jacksonville, NC, 28546 Notebook
     └── Phase_4_functions.py                   <- Phase 4 functions Notebook
     └── Ridgefield_WA_98642.ipynb              <- Ridgefield, WA, 98642 Notebook
-    └── Saratoga Springs_UT_84045.ipynb        <- Saratoga Springs, UT, 84045
+    └── Saratoga_Springs_UT_84045.ipynb        <- Saratoga Springs, UT, 84045
     └── zip_code_selection_and_one_model.ipynb <- Data Prep Notebook
 ├── gitignore                             <- python files to ignore 
 ├── Presentation.pdf                      <- PDF of our project presentation  
