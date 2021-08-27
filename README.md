@@ -25,7 +25,7 @@ We examined more than 30,000 records from Zillow that included house prices acro
  #### Data from Zillow [1](#sources)
     * new_zillow_data.csv
  #### Data from Realtor [2](#sources)
-    * 
+    * Downloaded from: https://www.realtor.com/research/data/
    
 ## Methods
 
