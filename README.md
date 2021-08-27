@@ -19,7 +19,7 @@
 A real estate investment company has asked us to select the top five US zip codes to invest in.  
  
 ## Data
-We examined more than 30,000 records from Zillow that included house prices across different zip codes from 1997-2021. We found additional data from Realtor.com that was used in the selection of the top 5 zip codes. The Zillow dataset contained 316 columns most of which were different dates from 1996 to 2021 with house prices in that zip code. We compressed the dataset into only 10 columns with the time becoming the index column and the values melting into a single column based on their zip code. The Realtor dataset included....
+We examined more than 30,000 records from Zillow that included house prices across different zip codes from 1997-2021. We found additional data from Realtor.com that was used in the selection of the top 5 zip codes. The Zillow dataset contained 316 columns most of which were different dates from 1996 to 2021 with house prices in that zip code. We compressed the dataset into only 10 columns with the time becoming the index column and the values melting into a single column based on their zip code. To create the dataset used for zip code selection, the Zillow and Realtor.com datasets were merged on zip code and record dates. In order to select the zip codes that would yeild the largest ROI, we considered both market and housing characteristics. 
 
 
  #### Data from Zillow [1](#sources)
@@ -30,7 +30,6 @@ We examined more than 30,000 records from Zillow that included house prices acro
 ## Methods
 
 ### Zip Code Selection
-To create the dataset used for zip code selection, the Zillow and Realtor.com datasets were merged on zip code and record dates. In order to select the zip codes that would yeild the largest ROI, we considered both market and housing characteristics. 
 
 For market evaluation, we considered the average pending ratio and average number of days a listing is on the market for. Pending ratio is the ratio of number of listings pending (listings that have accepted an offer) divided by the total number of active listings for a given month. For listing evaluation, we considered the average house value and the number of listings that underwent a price increase. 
 
