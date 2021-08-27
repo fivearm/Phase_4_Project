@@ -69,13 +69,13 @@ For the best projected ROI, we suggest Aurora, CO, with a current median home pr
     
     
 ## For More Information
-Please review our full analysis in different notebooks [Data Processing Notebook](./01_data_preparation.ipynb), [First Set of Models Notebook](./02_logistic_regression_knn_svm.ipynb), [Random Forest Model Notebook](./03_random_forest_models.ipynb), [XGBoost Notebook](./04_xgboost.ipynb), [Feature Engineering Notebook](./05_feature_engineering.ipynb), [Visualizations Notebook](./06_visualizations.ipynb), and our [Final Notebook](./07_svm_rfc.ipynb) or our [Presentation](./Presentation.pdf).    
+Please review our full analysis in different notebooks [Aurora, CO](../notebooks/Aurora_CO_80016.ipynb), [Erie, CO](../notebooks/Erie_CO_80516.ipynb), [Jacksonville, NC](../notebooks/Jacksonville_NC_28546.ipynb), [Functions to model](../notebooks/Phase_4_functions.py), [Saratoga Springs, UT](../notebooks/Saratoga Springs_UT_84045.ipynb), and our [Data Prep Notebook](../notebooks/zip_code_selection_and_one_model.ipynb), or our [Presentation](./Presentation.pdf).    
     
 ## Repositroy Structure
 ```
 ├── data                                  <- Sourced from an external source
 ├── images                                <- Images that were used in the presentation and notebooks
-
+├── Notebooks                             <- The notebooks that we made
     └── Aurora_CO_80016.ipynb                  <- Data Prep Notebook
     └── Erie_CO_80516.ipynb                    <- Erie, CO, 80516 Notebook
     └── Jacksonville_NC_28546.ipynb            <- Jacksonville, NC, 28546 Notebook
@@ -85,6 +85,5 @@ Please review our full analysis in different notebooks [Data Processing Notebook
     └── zip_code_selection_and_one_model.ipynb <- Data Prep Notebook
 ├── gitignore                             <- python files to ignore 
 ├── Presentation.pdf                      <- PDF of our project presentation  
-├── Data Dictionary.txt                   <- Data Dictionary
 └── README.md                             <- The README.md
 ```
