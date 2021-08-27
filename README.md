@@ -5,8 +5,7 @@
 ## Overview
 - [Business Problem](#Business-Problem)
 - [Data](#Data)
-   - [Well Data](./data)
-   - [Data Dictionary](./Data_Dictionary.txt)
+   - [Zillow and Realtor](./data)
 - [Methods](#Methods)
 - [EDA Results: Notable Features](#EDA-Results-Notable-Features) 
 - [Modeling Results](#Modeling-Results)
@@ -22,9 +21,9 @@ A real estate investment company has asked us to select the top five US zip code
 We examined more than 30,000 records from Zillow that included house prices across different zip codes from 1997-2021. We found additional data from Realtor.com that was used in the selection of the top 5 zip codes. The Zillow dataset contained 316 columns most of which were different dates from 1996 to 2021 with house prices in that zip code. We compressed the dataset into only 10 columns with the time becoming the index column and the values melting into a single column based on their zip code. To create the dataset used for zip code selection, the Zillow and Realtor.com datasets were merged on zip code and record dates. In order to select the zip codes that would yeild the largest ROI, we considered both market and housing characteristics. 
 
 
- #### Data from Zillow [1](#sources)
+ #### Data from Zillow
     * new_zillow_data.csv
- #### Data from Realtor [2](#sources)
+ #### Data from Realtor 
     * Downloaded from: https://www.realtor.com/research/data/
    
 ## Methods
@@ -75,19 +74,17 @@ Please review our full analysis in different notebooks [Data Processing Notebook
 ## Repositroy Structure
 ```
 ├── data                                  <- Sourced from an external source
-├── images                                <- Images that were used in the presentation and notebooks                                           
+├── images                                <- Images that were used in the presentation and notebooks
+
+    └── Aurora_CO_80016.ipynb                  <- Data Prep Notebook
+    └── Erie_CO_80516.ipynb                    <- Erie, CO, 80516 Notebook
+    └── Jacksonville_NC_28546.ipynb            <- Jacksonville, NC, 28546 Notebook
+    └── Phase_4_functions.py                   <- Phase 4 functions Notebook
+    └── Ridgefield_WA_98642.ipynb              <- Ridgefield, WA, 98642 Notebook
+    └── Saratoga Springs_UT_84045.ipynb        <- Saratoga Springs, UT, 84045
+    └── zip_code_selection_and_one_model.ipynb <- Data Prep Notebook
 ├── gitignore                             <- python files to ignore 
-├── 01_data_preparation.ipynb             <- Data Prep Notebook
-├── 02_logistic_regression_knn_svm.ipynb  <- Logistic Regression, KNN, and SVM Models Notebook
-├── 03_random_forest_models.ipynb         <- Random Forest Models Notebook
-├── 04_xgboost.ipynb                      <- XGBoost Models Notebook
-├── 05_feature_engineering.ipynb          <- Attempted Feature Engineering Notebook
-├── 06_visualizations.ipynb               <- Visualizations Notebook
-├── 07_svm_rfc.ipynb                      <- Final Models Notebook
 ├── Presentation.pdf                      <- PDF of our project presentation  
 ├── Data Dictionary.txt                   <- Data Dictionary
 └── README.md                             <- The README.md
 ```
-#### Sources
-1) https://lifewater.org/blog/tanzania-water-crisis-facts/
-2) https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/page/25/#labels_list
